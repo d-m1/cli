@@ -1,0 +1,237 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "data",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "int32"
+                },
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "actions",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "evidence",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "erase",
+            "base": "",
+            "fields": [
+                {
+                    "name": "request",
+                    "type": "int32"
+                },
+                {
+                    "name": "user",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "getindex",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "lists",
+            "base": "",
+            "fields": [
+                {
+                    "name": "numlist",
+                    "type": "int32"
+                },
+                {
+                    "name": "nAccMax",
+                    "type": "int32"
+                },
+                {
+                    "name": "durMaxAcc",
+                    "type": "int32"
+                },
+                {
+                    "name": "durPru",
+                    "type": "int32"
+                },
+                {
+                    "name": "sRes",
+                    "type": "int32"
+                },
+                {
+                    "name": "nTAT",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "nAT",
+                    "type": "int32"
+                },
+                {
+                    "name": "vNAccR",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "vNR",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "action_p_action_p_restriction",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "x_axis",
+                    "type": "int32"
+                },
+                {
+                    "name": "y_axis",
+                    "type": "int32"
+                }
+            ]
+        },
+        {
+            "name": "newlist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "numlist",
+                    "type": "int32"
+                },
+                {
+                    "name": "nAccMax",
+                    "type": "int32"
+                },
+                {
+                    "name": "durMaxAcc",
+                    "type": "int32"
+                },
+                {
+                    "name": "durPru",
+                    "type": "int32"
+                },
+                {
+                    "name": "sRes",
+                    "type": "int32"
+                },
+                {
+                    "name": "nTAT",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "nAT",
+                    "type": "int32"
+                },
+                {
+                    "name": "vNAccR",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "vNR",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "action_p_action_p_restriction",
+                    "type": "int32[]"
+                },
+                {
+                    "name": "x_axis",
+                    "type": "int32"
+                },
+                {
+                    "name": "y_axis",
+                    "type": "int32"
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "numlist",
+                    "type": "int32"
+                }
+            ]
+        },
+        {
+            "name": "upload",
+            "base": "",
+            "fields": [
+                {
+                    "name": "request",
+                    "type": "int32"
+                },
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "evidence",
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "erase",
+            "type": "erase",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "getindex",
+            "type": "getindex",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "newlist",
+            "type": "newlist",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "open",
+            "type": "open",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "upload",
+            "type": "upload",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "lists",
+            "type": "lists",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "proofs",
+            "type": "data",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}

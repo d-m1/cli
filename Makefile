@@ -17,12 +17,16 @@ NAME=hCLI
 # project setup
 # -------------
 
+
+# setup virtual environment
+setup-virtualenv:
+	virtualenv .venv
+	echo "Don't forget to launch source .venv/bin/activate"
+
 # setup project for development
 setup:
-    virtualenv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
-
+	pip install -r requirements.txt
+	pip install .
 
 # code tasks
 # ----------
