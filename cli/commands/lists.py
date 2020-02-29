@@ -119,7 +119,7 @@ def new() -> None:
     # Request user data
     arguments = prompt(_get_list_form())
     # Cast strings to corresponding types
-    arguments = {k:ast.literal_eval(v) for k,v in arguments.items()}
+    arguments = {k: ast.literal_eval(v) for k, v in arguments.items()}
     # Add admin user to request
     arguments['user'] = ADMIN
 
@@ -140,6 +140,6 @@ def new() -> None:
 def get() -> None:
     """Retrieves all the action lists from the Smart Contract"""
     print(f"Mostrando las listas existentes:")
-    table = eos_client.get_table('hemerton', 'hemerton', 'lists')
+    table = eos_client.get_table('hemerton', 'hemerton', 'lists', limit=5000)
     for row in table['rows']:
         print(f"{row}")
