@@ -2,7 +2,7 @@ from copy import deepcopy
 from typing import Optional, Tuple
 import click
 import ast
-from eos import eos_client, eos_key, ADMIN, newlist
+from eos import eos_client, eos_key, ADMIN, newlist, show_transaction_response
 
 from .terminal import validate_integer, validate_string, Input, prompt
 
@@ -132,14 +132,14 @@ def new() -> None:
     trx = {"actions": [payload]}
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
     print('------------------------------------------------')
-    print(resp)
-    print('------------------------------------------------')
+    print(f"New list {arguments['numlist']} registered successfully")
+    show_transaction_response(resp)
 
 
 @lists.command()
 def get() -> None:
     """Retrieves all the action lists from the Smart Contract"""
-    print(f"Mostrando las listas existentes:")
+    print(f"Showing existing lists:")
     table = eos_client.get_table('hemerton', 'hemerton', 'lists', limit=5000)
     for row in table['rows']:
         print(f"{row}")

@@ -102,7 +102,7 @@ def upload() -> None:
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
 
     print('------------------------------------------------')
-    print(f"Estado final del registro en EOS:")
+    print(f"Final state of the register in EOS Blockchain:")
     table = eos_client.get_table('hemerton', 'hemerton', 'proofs', limit=99999)['rows']
     for row in table:
         if row['key'] == arguments['request']:
@@ -114,7 +114,7 @@ def upload() -> None:
 @test.command()
 def get() -> None:
     """Retrieves all the requests from the Smart Contract"""
-    print(f"Mostrando las peticiones existentes:")
+    print(f"Showing existing requests:")
     table = eos_client.get_table('hemerton', 'hemerton', 'proofs', limit=99999)
     for row in table['rows']:
         print(f"{row}")

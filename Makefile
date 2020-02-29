@@ -18,8 +18,10 @@ NAME=hCLI
 # -------------
 
 # setup project for development
-setup: setup-pre-commit
-	poetry install
+setup:
+    virtualenv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
 
 
 # code tasks
@@ -45,6 +47,35 @@ bump-version:
 # documentation
 # ---------
 
+# docker
+# ------
+
+# build docker image
+docker-build:
+	docker build \
+		-t $(SLUG):latest \
+		-t $(SLUG):$(VERSION_MAJOR) \
+		-t $(SLUG):$(VERSION_MAJOR).$(VERSION_MINOR) \
+		-t $(SLUG):$(VERSION) \
+		.
+
+# start blockchain with docker
+docker-start:
+	docker run -d \
+		--name $(SLUG) \
+		$(SLUG):$(VERSION)
+
+# stop and remove the container that's currently running
+docker-stop:
+	-docker rm -f $(SLUG)
+
+# stop the container that's currently running
+docker-pause:
+	docker stop $(SLUG)
+
+# resume the container that's currently paused
+docker-resume:
+	docker start $(SLUG)
 
 
 # makefile help and guide

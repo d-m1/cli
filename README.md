@@ -15,10 +15,6 @@ Hemerton's command line interface.
 ### Setting up the project
 
 ```bash
-# create a new virtualenv from Python 3.7
-make setup-virtualenv
-# activate the virtualenv
-source venv/bin/activate
 # complete the setup
 make setup
 ```
