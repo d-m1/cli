@@ -26,7 +26,7 @@ setup-virtualenv:
 	echo -e "\033[1mDon't forget to launch source .venv/bin/activate\033[0m"
 
 # setup project for development
-setup:
+setup-cli:
 	pip install -r requirements.txt
 	pip install .
 
