@@ -78,8 +78,7 @@ def new() -> None:
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
     print("Processing TX...")
     request_id, vector = _get_last_request_data()
-    x_ax = int(len(vector) / 4)
-    matrix = [vector[x:x+x_ax] for x in range(0, len(vector), x_ax)]
+    matrix = [vector[x:x+4] for x in range(0, len(vector), 4)]
     print('------------------------------------------------')
     print(f"Your request ID is {str(request_id)}")
     print("Keep it safe in order to use it when you upload the evidence.")
