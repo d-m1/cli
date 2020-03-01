@@ -2,7 +2,6 @@ from copy import deepcopy
 from typing import Tuple, Iterable
 import click
 import ast
-import time
 from eos import eos_client, eos_key, ADMIN, open_req, show_transaction_response, upload_req
 
 from .terminal import prompt, OptionList, Input, validate_string, validate_integer
@@ -47,7 +46,8 @@ def _get_upload_form() -> Tuple[Input, ...]:
 def _get_last_request_data() -> int:
     """Retrieves the information about the last request."""
     table = eos_client.get_table('hemerton', 'hemerton', 'proofs', limit=99999)['rows']
-    return table.pop()['key'], table.pop()['actions']
+    result = table.pop()
+    return result['key'], result['actions']
 
 
 @test.command()
@@ -77,14 +77,16 @@ def new() -> None:
     trx = {"actions": [payload]}
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
     print("Processing TX...")
-    time.sleep(1)
-    request_id, matrix = _get_last_request_data()
+    request_id, vector = _get_last_request_data()
+    x_ax = vector.len() / 4
+    matrix = [vector[x:x+x_ax] for x in xrange(0, len(vector), x_ax)]
     print('------------------------------------------------')
     print(f"Your request ID is {str(request_id)}")
     print("Keep it safe in order to use it when you upload the evidence.")
     print('------------------------------------------------')
     print("MIT Matrix (Actions): ")
-    print(f"{matrix}")
+    for row in matrix:
+        print(f"{row}")
     show_transaction_response(resp)
 
 
@@ -109,7 +111,6 @@ def upload() -> None:
     trx = {"actions": [payload]}
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
     print("Processing TX...")
-    time.sleep(1)
     print('------------------------------------------------')
     print(f"Final state of the register in EOS Blockchain:")
     table = eos_client.get_table('hemerton', 'hemerton', 'proofs', limit=99999)['rows']
