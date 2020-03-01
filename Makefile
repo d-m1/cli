@@ -60,8 +60,6 @@ bump-version:
 docker-build:
 	docker build \
 		-t $(SLUG):latest \
-		-t $(SLUG):$(VERSION_MAJOR) \
-		-t $(SLUG):$(VERSION_MAJOR).$(VERSION_MINOR) \
 		-t $(SLUG):$(VERSION) \
 		.
 
