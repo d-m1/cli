@@ -78,7 +78,7 @@ def new() -> None:
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
     print("Processing TX...")
     request_id, vector = _get_last_request_data()
-    x_ax = vector.len() / 4
+    x_ax = len(vector) / 4
     matrix = [vector[x:x+x_ax] for x in xrange(0, len(vector), x_ax)]
     print('------------------------------------------------')
     print(f"Your request ID is {str(request_id)}")
