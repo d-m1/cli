@@ -2,6 +2,7 @@ from copy import deepcopy
 from typing import Tuple, Iterable
 import click
 import ast
+import time
 from eos import eos_client, eos_key, ADMIN, open_req, show_transaction_response, upload_req
 
 from .terminal import prompt, OptionList, Input, validate_string, validate_integer
@@ -75,6 +76,8 @@ def new() -> None:
     # final transaction formed
     trx = {"actions": [payload]}
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
+    print("Processing TX...")
+    time.sleep(1)
     request_id, matrix = _get_last_request_data()
     print('------------------------------------------------')
     print(f"Your request ID is {str(request_id)}")
@@ -105,7 +108,8 @@ def upload() -> None:
     # final transaction formed
     trx = {"actions": [payload]}
     resp = eos_client.push_transaction(trx, eos_key, broadcast=True)
-
+    print("Processing TX...")
+    time.sleep(1)
     print('------------------------------------------------')
     print(f"Final state of the register in EOS Blockchain:")
     table = eos_client.get_table('hemerton', 'hemerton', 'proofs', limit=99999)['rows']
