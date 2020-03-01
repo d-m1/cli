@@ -22,7 +22,7 @@ make setup-blockchain
 make setup-virtualenv
 # activate the virtualenv
 source .venv/bin/activate
-# complete the cli setup
+# complete the cli application setup
 make setup-cli
 ```
 
