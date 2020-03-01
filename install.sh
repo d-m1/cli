@@ -2,6 +2,9 @@ set -a
 . ./password
 set +a
 
+echo "Installing Hemerton Smart contract..."
+sleep 5
+
 cleos wallet open
 cleos wallet unlock --password $PASSWORD
 cleos wallet list

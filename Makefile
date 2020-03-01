@@ -11,17 +11,19 @@ VERSION_PATCH:=$(shell echo $(VERSION) | cut -d'.' -f3)
 # -------------
 
 SLUG=hcli
-NAME=hCLI
+NAME=HemertonCLI
 
 
 # project setup
 # -------------
 
+# setup blockchain & install smart contract
+setup-blockchain: docker-build docker-start docker-setup
 
 # setup virtual environment
 setup-virtualenv:
 	virtualenv .venv
-	echo "Don't forget to launch source .venv/bin/activate"
+	echo -e "\033[1mDon't forget to launch source .venv/bin/activate\033[0m"
 
 # setup project for development
 setup:
@@ -65,13 +67,18 @@ docker-build:
 
 # start blockchain with docker
 docker-start:
-	docker run -d \
+	docker run -d -t \
 		--name $(SLUG) \
+		-p 8888:8888 -p 9876:9876 \
 		$(SLUG):$(VERSION)
+
+# install smart contract
+docker-setup:
+	docker exec $(SLUG) sh install.sh
 
 # stop and remove the container that's currently running
 docker-stop:
-	-docker rm -f $(SLUG)
+	docker rm -f $(SLUG)
 
 # stop the container that's currently running
 docker-pause:
