@@ -43,6 +43,3 @@ make setup-cli
     # retrieve all lists
     hemerton lists get
 ```
-
-### TODO:
-Improve cli command names x)
